@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+</head>
+
+<body>
+    <script>
+        function deepClone(obj = {}, map = new Map()) {
+            if (typeof obj !== "object") {
+                return obj;
+            }
+            if (map.get(obj)) {
+                return map.get(obj);
+            }
+            let result = {};
+            if (obj instanceof Array ||
+                Object.prototype.toString(obj) === "[object Array]") {
+                result = [];
+            }
+            map.set(obj, result);
+            for (const key in obj) {
+            
+                if (obj.hasOwnProperty(key)) {
+                
+                    result[key] = deepClone(obj[key], map);
+                }
+            }
+
+           
+            return result;
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
